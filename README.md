@@ -121,16 +121,16 @@ After exploring this demo, you should understand:
 
 ## 🛠️ Technologies Used
 
-- **React 18**: Modern React with hooks
+- **React 19**: Modern React with hooks
 - **CSS3**: Modern styling with Grid and Flexbox
 - **JavaScript ES6+**: Modern JavaScript features
 
 ## 📚 Further Reading
 
-- [React Official Documentation](https://reactjs.org/docs/)
-- [Thinking in React](https://reactjs.org/docs/thinking-in-react.html)
-- [Lifting State Up](https://reactjs.org/docs/lifting-state-up.html)
-- [Controlled Components](https://reactjs.org/docs/forms.html#controlled-components)
+- [React Official Documentation](https://react.dev/)
+- [Thinking in React](https://react.dev/learn/thinking-in-react)
+- [Sharing State Between Components](https://react.dev/learn/sharing-state-between-components)
+- [Reacting to Input with State](https://react.dev/learn/reacting-to-input-with-state)
 
 ## 🤝 Contributing
 
