@@ -5,14 +5,16 @@ This project demonstrates different data flow patterns in React applications, sh
 ## 🎯 Patterns Demonstrated
 
 ### 1. Unidirectional Flow (Top-Down)
-- **Description**: Data flows in one direction from parent to children components via props
+- **Description**: The general React architecture where state is owned by a parent and flows down to child components via props
 - **Use Case**: Most common React pattern, recommended for most applications
 - **Benefits**: Predictable, easy to debug, follows React best practices
 
 ### 2. Parent → Child Flow
-- **Description**: Parent component manages state and passes data down to child components
-- **Use Case**: When children are purely presentational components
-- **Benefits**: Simple, centralized state management, clear data flow
+- **Description**: A specific parent-to-child communication pattern where a parent passes values and, when needed, callback functions to children
+- **Use Case**: Sharing parent-owned data with child components and allowing children to request parent updates through callbacks
+- **Benefits**: Simple, centralized state management, clear props and event relationships
+
+> **How these patterns differ:** Unidirectional flow is the broader rule that data and state updates follow a predictable direction through the component tree. Parent → Child Flow is one concrete example of that rule. The parent sends data down as props; a child can notify the parent by calling a callback prop, but the parent still owns and changes the state.
 
 ### 3. Child → Parent Flow
 - **Description**: Children communicate with parent through callback functions
@@ -23,6 +25,13 @@ This project demonstrates different data flow patterns in React applications, sh
 - **Description**: Components share state and can both read and update the same data
 - **Use Case**: Complex forms, shared state scenarios
 - **Benefits**: Convenient for shared state, reduces prop drilling
+
+### 5. Context API
+- **Description**: A Context Provider makes shared values available to descendant components without passing props through every intermediate component
+- **Use Case**: Themes, authenticated users, locale settings, notifications, and other data needed by many components
+- **Benefits**: Avoids prop drilling while keeping shared state and updates in one provider
+
+> **Important:** Context does not make data global or change React's one-way update model. A provider owns the value, consumers read it with `useContext`, and consumers use provider actions to request updates.
 
 ## 🚀 Getting Started
 
@@ -53,7 +62,8 @@ src/
 │   ├── UnidirectionalFlow.js    # Top-down data flow example
 │   ├── ParentToChildFlow.js     # Parent to child communication
 │   ├── ChildToParentFlow.js     # Child to parent communication
-│   └── TwoWayBinding.js         # Two-way binding pattern
+│   ├── TwoWayBinding.js         # Two-way binding pattern
+│   └── ContextFlow.js            # Context Provider and useContext example
 ├── App.js                       # Main application component
 ├── App.css                      # Application styles
 ├── index.js                     # Application entry point
@@ -77,8 +87,8 @@ src/
 
 ### Callback Functions
 - Functions passed as props to child components
-- Allow children to communicate with parents
-- Enable child-to-parent data flow
+- Allow children to request actions or state updates from parents
+- Enable event communication upward without moving state ownership to the child
 
 ### State Management
 - State lives in parent components
@@ -90,16 +100,24 @@ src/
 - Enable two-way data binding
 - Provide predictable behavior
 
+### Context API
+- `createContext` creates a channel for shared values
+- A Provider supplies the current value to its descendants
+- `useContext` lets a descendant read the nearest Provider value
+- Use Context to avoid prop drilling, not as a replacement for every prop
+
 ## 🎓 Learning Objectives
 
 After exploring this demo, you should understand:
 
-1. How data flows in React applications
-2. Different patterns for component communication
-3. When to use each pattern
-4. How to implement callback functions
-5. How to create controlled components
-6. Best practices for React data flow
+1. The difference between the general unidirectional-flow architecture and a specific parent-to-child communication pattern
+2. How data flows in React applications
+3. Different patterns for component communication
+4. How Context Provider and `useContext` share values with descendants
+5. When to use each pattern
+6. How to implement callback functions
+7. How to create controlled components
+8. Best practices for React data flow
 
 ## 🛠️ Technologies Used
 

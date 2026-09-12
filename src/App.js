@@ -3,6 +3,7 @@ import UnidirectionalFlow from './components/UnidirectionalFlow';
 import ParentToChildFlow from './components/ParentToChildFlow';
 import ChildToParentFlow from './components/ChildToParentFlow';
 import TwoWayBinding from './components/TwoWayBinding';
+import ContextFlow from './components/ContextFlow';
 import './App.css';
 
 function App() {
@@ -32,6 +33,12 @@ function App() {
       title: 'Two-Way Binding Pattern',
       description: 'Components share state and can both read and update the same data. Similar to Angular\'s two-way binding but implemented with React patterns.',
       component: TwoWayBinding
+    },
+    {
+      id: 'context',
+      title: 'Context API',
+      description: 'A provider makes shared values available to deeply nested components without passing props through every intermediate component.',
+      component: ContextFlow
     }
   ];
 
@@ -100,6 +107,14 @@ function App() {
                   <li>🎯 Similar to Angular's two-way binding</li>
                 </>
               )}
+              {activePattern === 'context' && (
+                <>
+                  <li>📦 A Context Provider stores shared values and actions</li>
+                  <li>🔎 Descendants read those values with useContext</li>
+                  <li>🚫 Intermediate components do not need to forward props</li>
+                  <li>🔄 Consumers re-render when the Context value changes</li>
+                </>
+              )}
             </ul>
           </div>
 
@@ -141,6 +156,14 @@ function App() {
                   <li>✅ Reduces prop drilling</li>
                   <li>✅ Good for complex forms</li>
                   <li>✅ Familiar pattern from other frameworks</li>
+                </>
+              )}
+              {activePattern === 'context' && (
+                <>
+                  <li>✅ Useful for theme, authentication, locale, and app-wide settings</li>
+                  <li>✅ Avoids repetitive prop forwarding</li>
+                  <li>✅ Keeps shared access explicit through a Provider</li>
+                  <li>✅ Preserves React's one-way state updates</li>
                 </>
               )}
             </ul>
